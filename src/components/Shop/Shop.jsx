@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Product from '../../Product/Product';
+import Cart from '../Cart/Cart';
+import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
 
@@ -9,7 +10,7 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
 
     useEffect(()=>{
-        fetch('/src/fakeData/products.json')
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
         .then(res => res.json())
         .then(data => setProduct(data))
     },[])
@@ -32,8 +33,7 @@ const Shop = () => {
                 
             </div>
             <div className="cart-container">
-                <h4>Order Summery</h4>
-                <p>selected item {cart.length}</p>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );
