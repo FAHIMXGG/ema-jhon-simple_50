@@ -3,7 +3,7 @@ import './cart.css'
 const Cart = ({cart}) => {
     //const cart = props.cart; // o1
     //const {cart} = props; // o2
-
+    //console.log(cart);
     // calculate
     let total = 0;
     let totalShipping = 0;
@@ -16,7 +16,7 @@ const Cart = ({cart}) => {
 
     return (
         <div className='cart'>
-            <h4>Order Summery</h4>
+                <h4>Order Summery</h4>
                 <p>Selected item {cart.length}</p>
                 <p>Total Price: ${total} </p>
                 <p>Total Shipping: ${totalShipping}</p>
