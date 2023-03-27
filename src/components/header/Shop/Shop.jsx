@@ -5,14 +5,18 @@ const Shop = () => {
 
     const [produtcs, setProduct] = useState([]);
 
+    //put data
+    const [cart, setCart] = useState([]);
+
     useEffect(()=>{
         fetch('/src/fakeData/products.json')
         .then(res => res.json())
         .then(data => setProduct(data))
     },[])
-
+    // get data
     const handleAddToCart = (product) =>{
-        console.log(product)
+        const newCart = [...cart, product];
+        setCart(newCart);
     }
 
     return (
@@ -29,6 +33,7 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <h4>Order Summery</h4>
+                <p>selected item {cart.length}</p>
             </div>
         </div>
     );
