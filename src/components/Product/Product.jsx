@@ -6,6 +6,7 @@ import './Product.css'
 const Product = (props) => {
     //console.log(props)
     const { img, name, seller, quantity, ratings, price } = props.product
+    // product cart add (onclick function) , rec from shop
     const handleAddToCart = props.handleAddToCart;
 
     return (

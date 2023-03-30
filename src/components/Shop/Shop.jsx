@@ -4,10 +4,10 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
-
+    //for fetch data
     const [products, setProduct] = useState([]);
 
-    //put data
+    //put data to cart
     const [cart, setCart] = useState([]);
     //core data
     useEffect(()=>{
@@ -22,7 +22,7 @@ const Shop = () => {
         
         const savedCart = [];
         //console.log(storedCart);
-        // step 1
+        // step 1 get id
         for(const id in storedCart){
             //console.log(id);
             // step 2 get the product by using id
@@ -38,12 +38,19 @@ const Shop = () => {
         }
         //step 5 set the cart
         setCart(savedCart);
-    }, [products])
+    }, [products]) // set dependency for async reload (fetch)
 
-    // get data
+
+
+
+
+    
+    // get data to cart from product
     const handleAddToCart = (product) =>{
+        // every time new cart
         const newCart = [...cart, product];
         setCart(newCart);
+        // data to db
         addToDb(product.id)
     }
 
@@ -54,6 +61,7 @@ const Shop = () => {
                     products.map(product => <Product 
                     key={product.id}
                     product = {product}
+                    // push to cart
                     handleAddToCart = {handleAddToCart}
                     ></Product>)
                 }
